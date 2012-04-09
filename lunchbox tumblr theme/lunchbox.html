@@ -1,0 +1,756 @@
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+    <html>
+    <head>
+    
+        <!-- CUSTOM COLORS -->
+        
+            <meta name="color:Background" content="#ff003B"/>
+            <meta name="color:Accent" content="#FFE000"/>
+            <meta name="color:Text" content="#333333"/>
+            <meta name="color:Links" content="#3377ff"/>
+            <meta name="font:Body" content="Georgia, serif"/>
+            <meta name="font:Titles" content="'Lobster', Arial, sans-serif" />
+    		<meta name="image:Header" content="" />
+
+        <!-- END CUSTOM COLORS -->
+        
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+        <title>
+            {Title}
+            {block:PostSummary} - {PostSummary} {/block:PostSummary}
+        </title>
+        
+        <link rel ="icon" href="{Favicon}"/>
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+        {block:Description}
+            <meta name="description" content="{MetaDescription}" />
+        {/block:Description}
+        
+        <style type = "text/css">	
+        /* GUTS */
+            body {
+                font-family: Georgia;
+                font-size: 14px;
+                color: {color:Text};
+                background: #ff003b;
+                background: {color:Background};
+                text-align: left;
+            }
+            
+            blockquote {
+                margin-left:7px;
+                margin-right:0;
+                padding-right:16px;
+                padding-left:7px;
+                border-left: 2px solid {color:Accent};
+                font-style:italic;
+            }
+            
+            a {
+                color: {color:Links};
+                text-decoration: none;
+                padding-bottom: 0px;
+            }
+            
+            a:hover {
+                color: {color:PageBackground};
+            }
+            
+            p, ul, ol {
+            	margin: 7px 0;
+            }
+            
+            p:first-child,
+        	ul:first-child,
+        	ol:first-child {
+            	margin-top:0;
+            }
+            
+            p:last-child,
+            ul:last-child,
+        	ol:last-child {
+            	margin-bottom:0;
+            }
+            
+            img {
+                border: none;
+            }
+            
+            h2{
+                font-weight:normal;
+                font-size: 20px;
+                color: {color:Text};
+                font-style: normal;
+                margin:0;
+                margin-bottom:20px;
+                font-family: {font:Titles};
+
+            }
+            
+            .accent {
+            	font-family: Arial, sans-serif;
+                text-shadow: 1px 1px 0 rgba(255,255,255,.1);
+                color: rgba(0,0,0,.4);
+            }
+            
+            .accent a {
+            	color: rgba(0,0,0,.3);
+				border:none;
+			}
+			
+			.accent a:hover {
+				color: rgba(0,0,0,.4);
+				border:none;
+            }
+            
+        /* wrapper */
+            #wrapper{
+                width: 750px;
+                margin: 0 auto;
+                padding:0;
+                position:relative;
+            }
+            
+        /* posts */
+            
+            
+            #posts{
+                width: 500px;
+                padding: 15px 24px 15px 0;
+                border-right: 2px solid rgba(0,0,0,.1);
+            }
+            
+             {block:PermalinkPage}
+            	#posts {
+            		width:100%;
+            		border:none;
+            	}
+            	
+            {/block:PermalinkPage}
+            
+            .post {
+                line-height:18px;
+                background: {color:Posts};			
+                text-align:left;
+                box-shadow: inset 0 0 10px rgba(0,0,0,.3),
+                	0 0 10px rgba(0,0,0,.5);
+                background: #fff;
+                margin: 60px 0;
+                padding: 0 30px;
+            }
+            
+            
+            .post:first-child {
+        		margin:0;
+            }
+            
+            .post:last-child {
+        		margin-bottom:30px;
+            }
+            
+            .post pre {
+				max-width: 100%;
+				overflow:auto !important;
+				word-wrap:break-word;
+				padding:25px;
+				background: #eee;
+				border-radius:7px;
+				-moz-border-radius:7px;
+				-webkit-border-radius:7px;
+			}
+			
+			.post sup, .post sub {
+				line-height:5px;
+			}
+			
+			.post hr {
+				border:none;
+				border-top:1px solid {color:Accent};
+			}
+			            
+			.date a { 
+					height:0px;
+					position:absolute;
+					left:-80px;
+					margin-top:5px;
+					display:block;
+					color:#fff;
+					text-align:center;
+					padding:5px;
+					border-top: 3px solid rgba(0,0,0,.2);
+					border-bottom:none;
+					text-shadow: 1px 1px 0 rgba(0,0,0,.3);
+				}
+				
+			.date a:hover {
+				border-top-color: {color:Accent};
+			}
+			
+			.date .day {
+				font-size:16px;
+			}
+				            
+            .image {
+            	position:relative;
+            	left:-30px;
+            	background:#222;
+            	width:500px;
+            }
+            
+            .image a {
+                border: none;
+            }
+            
+            .image img {
+                display:block;
+                margin:0 auto;
+            }
+            	
+            {block:PermalinkPage}
+            	.image {
+            		width:750px;
+            	}
+            	
+            	.image img {
+            		max-width:750px;
+            		margin: 0 auto;
+            	}
+            {/block:PermalinkPage}
+            
+            .video .player {
+            	margin: 0 -30px;
+            	background: #222;
+            	text-align:center;
+            }
+            
+            .player iframe,
+            .player object,
+            .player embed {
+            	display:block;
+            	margin: 0 auto;
+            }
+            
+            
+            .audio img.albumart {
+            	float:left;
+            	margin: 0 30px 0 0;
+            }
+            
+            .quote {
+            	position:relative;
+            }
+            
+            .mark{
+                position:absolute;
+                z-index:0;
+                width:10px;
+                line-height:100%;
+                font-size:125px;
+                color: {color:Accent};
+                top:10px;
+                left:-20px;
+            }
+            
+            .verbatim {
+                font-size: 20px;
+                line-height:100%;
+                z-index:3;
+                position:relative;
+                font-style:italic;
+            }
+            
+            .quote table {
+            	border-collapse:collapse;
+            	margin: 14px 0 0;
+            }
+            
+            .quote table td {
+            	margin:0;
+            	padding:0;
+            }
+            
+           .quote table td.dash {
+                vertical-align:top;
+                padding: 0 5px 0 0;
+            }
+            
+            .post h3.title {
+                font-size: 30px;
+                margin: 0 0 10px 0;
+                font-weight:normal;
+                line-height:normal;
+                border-bottom: 3px solid {color:Accent};
+                font-family: {font:Titles};
+                color: {color:Links};
+            }
+            
+            .title a {
+                border: none;
+                font-weight: normal;
+            }
+            
+            
+            .text{
+                padding:30px 0;
+            }
+            
+            .text img {
+            	max-width:440px;
+            	{block:PermalinkPage}
+            		max-width:500px;
+            	{/block:PermalinkPage}
+            	display:block;
+            	margin: 14px auto;
+            }
+            
+            .chat {
+            }
+            
+            .chat ul {
+                list-style:none;
+                margin: 0;
+                padding: 0;
+                text-indent: 0;
+            }
+            
+            .post-footer {
+            	margin: -30px;
+            	margin-top:0;
+                font-size: 11px;
+                line-height: 15px;
+                font-family: Arial, sans-serif;
+                background: {color:Accent};
+                padding: 3px 10px;
+                box-shadow: inset 0 -5px 10px rgba(0,0,0,.07),
+                	inset 5px 0 10px rgba(0,0,0,.07),
+                	inset -5px 0 10px rgba(0,0,0,.07);
+                font-style: italic;
+                color: rgba(0,0,0,.4);
+                text-shadow: 1px 1px 0 rgba(255,255,255,.2);
+            }
+            
+            .post-footer a {
+                color: rgba(0,0,0,.2);
+                border:none;
+            }
+            
+            .post-footer a:hover {
+             	color: rgba(0,0,0,.4);
+             }
+            
+            .notecount {
+            	display:inline-block;
+            	float:right;
+            }
+            
+            #notes { 
+            	margin-top:30px;
+            }
+            
+            #notes h4 {
+
+			}
+			
+			ol.notes {
+				
+			}
+			
+			ol.notes li {
+				padding: 2px 0;
+			}
+			
+        /* sidebar */
+        
+            .sidebar-wrapper {
+            	width:200px;
+            	margin:15px 0 0;
+            	float:right;
+            }
+        
+            
+            .sidebar {
+                text-align: right;
+                color: #fff;
+                text-align: left;
+                position:fixed; 
+            	width:200px;
+            }
+            
+            {block:PermalinkPage} 
+            	.sidebar {
+            		display:none;
+            	}
+            {/block:PermalinkPage} 
+            
+            .menu {
+            	margin: 15px 0;
+            }
+            
+            .menu a:first-child {
+				-webkit-border-top-left-radius: 3px;
+				-webkit-border-top-right-radius: 3px;
+				-moz-border-radius-topleft: 3px;
+				-moz-border-radius-topright: 3px;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+            }
+            
+            .menu a {
+                padding: 7px 4px;
+                display:block;
+               	color: {color:Text};
+               	border:none;
+                font-size: 13px;
+                box-shadow: 0 1px 3px rgba(0,0,0,.5);
+                font-family:Arial, sans-serif;
+                font-weight:bold;
+                width:90%;
+                text-align:center;
+                background:#fff;
+                margin:0;
+                border-bottom: 1px solid rgba(0,0,0,.15);
+                text-transform:capitalize;
+            }
+            
+            
+            .menu a:first-child {
+				-webkit-border-top-left-radius: 3px;
+				-webkit-border-top-right-radius: 3px;
+				-moz-border-radius-topleft: 3px;
+				-moz-border-radius-topright: 3px;
+				border-top-left-radius: 3px;
+				border-top-right-radius: 3px;
+            }
+            
+            .menu a:last-child {
+				-webkit-border-bottom-left-radius: 3px;
+				-webkit-border-bottom-right-radius: 3px;
+				-moz-border-radius-bottomleft: 3px;
+				-moz-border-radius-bottomright: 3px;
+				border-bottom-left-radius: 3px;
+				border-bottom-right-radius: 3px;
+				border-bottom:none;
+            }
+            
+            .menu a:hover {
+                background: {color:Links};
+                color:#fff;
+                border-bottom: 1px solid rgba(0,0,0,.15);
+            }
+            
+            .sidebar input[type=text] {
+            	background: rgba(0,0,0,.1);
+            	box-shadow: inset 0 0 3px rgba(0,0,0,.15),
+            		0 1px 2px rgba(255,255,255,.4);
+            	border:none;
+            	outline:none;
+            	padding: 7px 4px;
+            	width: 90%;
+            	margin: 0 2px;
+            	border-radius:3px;
+            	color:#fff;
+            }
+            
+            .sidebar input[type=text]::-moz-placeholder {
+            	color:#fff;
+            }
+            
+            .sidebar input[type=text]::-webkit-input-placeholder {
+            	color:#fff;
+            }
+            
+            .sidebar input[type=text]:active::-moz-placeholder,
+             .sidebar input[type=text]:focus::-moz-placeholder  {
+            	color:#ccc;
+            }
+            
+            .sidebar input[type=text]:active::-webkit-input-placeholder,
+             .sidebar input[type=text]:focus::-webkit-input-placeholder{
+            	color:#ccc;
+            }
+            
+            .sidebar .pagination {
+            	position:relative;
+            	bottom:10px;
+            }
+                        
+            h1#title{
+                font-size: 34px;
+                font-style:normal;
+                text-align:right;
+                color: {color:Accent};
+                font-family: {font:Titles};
+                -moz-text-shadow: 2px 2px 2px rgba(0,0,0,.7);
+                -webkit-text-shadow: 2px 2px 2px rgba(0,0,0,.7);
+                text-shadow: 2px 2px 2px rgba(0,0,0,.7);
+                line-height: 34px;
+                padding: 5px 0 15px 0;
+                border-bottom: 2px solid rgba(0,0,0,.1);
+            }
+            
+            h1#title a, h1#title a:hover {
+                color: {color:Accent};
+                text-decoration: none;
+                border: none;
+                font-weight: normal;
+            }
+            
+            h2#description {
+            	font-family:georgia;
+            	font-style:italic;
+            	color: #fff;
+            	font-size: 15px;
+            }
+            
+            #notification {
+            	position:relative;
+            	top: 50px;
+            	height: 0px;
+            }
+            
+            
+          
+        /* footer */
+            
+            #footer {
+                font-size: 11px;
+                border-top: 2px solid rgba(0,0,0,.1);
+                font-style:italic;
+                margin-top:24px;
+                padding:24px 0;
+            }
+            
+            
+            
+        {CustomCSS}
+
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+        	<div id="header">
+        		{block:TagPage}
+					<div id="notification" class="accent">Viewing all posts tagged &ldquo;{Tag}&rdquo;.</div>
+				{/block:TagPage}
+				{block:SearchPage}
+					<div id="notification" class="accent">Search for &ldquo;{SearchQuery}&rdquo; yielded {SearchResultCount} result(s).</div>
+				{/block:SearchPage}
+            		
+        		<h1 id="title"><a href = "/">{Title}</a></h1>
+        	</div>
+        	
+	
+        	
+        	<div class="sidebar-wrapper">
+				<div class= "sidebar">
+					<h2 id="description">{Description}</h2>
+						<div id = "search">
+							<form action="/search" method="get">
+								<input type="text" placeholder="Search" name="q" value="{SearchQuery}"/>
+							</form>
+						</div>
+						
+						
+						
+						<div class="menu">
+							<a href = "/archive">Archive</a>
+							<a href = "{RSS}">RSS</a>
+							{block:AskEnabled} 
+								<a href="/ask">{AskLabel}</a>
+							{/block:AskEnabled}
+							{block:SubmissionsEnabled} 
+								<a href="/submit">{SubmitLabel}</a>
+							{/block:SubmissionsEnabled}
+							{block:HasPages} 
+								{block:Pages}
+									<a href = "{URL}">{Label}</a>
+								{/block:Pages}
+							{/block:HasPages}
+							
+						</div>
+				</div>
+			</div>
+			{block:Posts}
+					
+			{/block:Posts}
+			
+			
+			<div id="posts">
+				{block:Posts}
+                    <div class="post">
+                    	{block:Date}
+							<div class="date">
+								<a href="{Permalink}">
+									<span class="day">{DayOfMonth} {ShortMonth}</span>
+									<br>
+									<span class="year">{Year}</span>
+								</a>
+							</div>
+						{/block:Date}
+						
+                        {block:Text}
+                            <div class="text">
+                                {block:Title}
+                                    <h3 class="title">{block:IndexPage}<a href="{Permalink}">{/block:IndexPage}{Title}{block:IndexPage}</a>{/block:IndexPage}</h3>
+                                {/block:Title}
+                                {Body}
+                            </div>
+                        {/block:Text}
+                        
+                            
+                        {block:Photo}
+                            <div class="photo">
+                                <div class="image">
+                                    <img alt="{PhotoAlt}" {block:PermalinkPage} {block:HighRes} src="{PhotoURL-HighRes}" {/block:HighRes} {/block:PermalinkPage} src="{PhotoURL-500}" >
+                                </div>
+                                {block:Caption}
+                                    <div class="text">{Caption}</div>
+                                {/block:Caption}	
+                            </div>	
+                        {/block:Photo}
+                        
+                            
+                        {block:Quote}
+                            <div class="quote text">
+                                <div class = "mark">&ldquo;</div>
+                                <div class="verbatim">
+                                    {Quote}
+                                </div>
+                            	<table>
+									<tr>
+										<td class="dash">&mdash;</td>
+										{block:Source}
+											   <td> {Source} </td>
+										{/block:Source}
+									</tr>
+								 </table>
+                            </div>
+                        {/block:Quote}
+                        
+                                
+                        {block:Link}
+                            <div class="link text">
+                                <h3 class="title"><a href="{URL}" {Target}>{Name} &raquo;</a></h3>
+                                {block:Description}
+                                     {Description}
+                                {/block:Description}
+                            </div>
+                        {/block:Link}
+                        
+                            
+                        {block:Chat}
+                            <div class="chat text">	
+                                {block:Title}
+                                    <h3 class="title">{Title}</h3>
+                                {/block:Title}
+                                {block:Lines}
+                                    <ul>
+                                        <li>
+                                            {block:Label}
+                                                <strong>
+                                                    {Label}
+                                                </strong>
+                                            {/block:Label}
+                                            {Line}
+                                        </li>
+                                    </ul>
+                                {/block:Lines}
+                            </div>
+                        {/block:Chat}
+                                
+                        {block:Audio}
+                            <div class="audio text">
+                                {block:AlbumArt}
+                                    <img src ="{AlbumArtURL}" class="albumart" width="200px">
+                                {/block:AlbumArt}
+                                {AudioPlayerBlack}
+                                {block:Caption}
+                                    {Caption}
+                                {/block:Caption}
+                                <div style="clear:both;"></div>
+                            </div>
+                        {/block:Audio}
+                                
+                        {block:Video}
+                            <div class="video">
+                            	<div class="player">
+                               	 {Video-500}
+                               	</div>
+                                {block:Caption}
+                                    <div class="text">{Caption}</div>
+                                {/block:Caption}
+                            </div>
+                        {/block:Video}
+                        
+                 {block:Date}
+                        <div class="post-footer">
+                        	{block:Date}
+                        		<a href="{Permalink}">{TimeAgo}</a>
+                        	{/block:Date}
+						   
+                       		 <div class="notecount">
+                       		 	{block:NoteCount}
+                        			{NoteCountWithLabel}
+                        		{/block:NoteCount}	
+                        		&infin;</a>
+                        	</div>
+							<br>
+							{block:HasTags}
+								tagged {block:Tags} <a href="{TagURL}">#{Tag}</a> {/block:Tags}
+							{/block:HasTags}  
+                        </div>
+                    {/block:Date}
+         </div>
+         {block:PermalinkPagination}    
+         	<div class="pagination accent" style="margin-top:50px;"> 
+            
+				{block:NextPost}
+					<a href = "{NextPost}">next post</a>
+				{/block:NextPost}
+				<div style="float:right">
+					{block:PreviousPost}
+						<a href = "{PreviousPost}">previous post</a>
+					{/block:PreviousPost}
+				</div>
+				<div style="clear:both;"></div>
+			</div>    
+		{/block:PermalinkPagination} 
+			       
+                    
+                
+            {/block:Posts}
+             {block:PostNotes}
+					<div id="notes" class="accent">
+						<h4> Reactions </h4>
+						{PostNotes}
+					</div>
+				{/block:PostNotes}
+			<div class="pagination accent">
+				{block:Pagination} 
+					<div style="float:right">
+						{block:NextPage}
+						<a href = "{NextPage}" >next page</a>
+					{/block:NextPage}
+					</div>
+					{block:PreviousPage}
+							<a href = "{PreviousPage}" >previous page</a>
+						{/block:PreviousPage}
+					
+				{/block:Pagination}
+			</div>
+        </div>	
+        
+        
+		
+		<div id = "footer" class="accent">
+			<p>Lunchbox Theme V1.0 by <a href ="http://johnlempka.tumblr.com/lunchbox">johnlempka</a>.</p>
+		</div>
+		
+		<div style="clear:both"></div>
+	</div>
+
+    </body>
+
+    </html>
+
